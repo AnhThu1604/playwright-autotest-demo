@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@framework/*": [
+        "./tests/framework/*"
+      ],
+      "@pages/*": [
+        "./tests/framework/pages/*"
+      ],
+      "@/*": [
+        "./tests/*"
+      ]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}

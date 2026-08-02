@@ -2,11 +2,11 @@ import { Locator } from "@playwright/test";
 
 export class Radio {
     readonly locator: Locator;
-    readonly errorMsg: Locator;
+    
 
-    constructor(locator: Locator, errorMsg: Locator) {
+    constructor(locator: Locator) {
         this.locator = locator;
-        this.errorMsg = errorMsg;
+      
     }
 
   async selectByLabel(value: string) {

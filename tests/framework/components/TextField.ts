@@ -5,11 +5,10 @@ export class TextField {
     readonly input: Locator;
     readonly errorMsg: Locator;
 
-    // Truyền host (thẻ bao ngoài cùng) thay vì truyền riêng ô input
     constructor(host: Locator) {
         this.host = host;
-        this.input = host.getByRole("textbox").or(host.locator("input, textarea"));
-        this.errorMsg = host.locator(".oxd-input-group__message");
+        this.input = host.locator('xpath=self::input | self::textarea | .//input | .//textarea').first();
+        this.errorMsg = host.locator('xpath=.//span[contains(@class, "oxd-input-group__message")] | ancestor::div[contains(@class, "oxd-input-group")]//span[contains(@class, "oxd-input-group__message")]').first();
     }
 
     async fill(text: string) {
@@ -34,5 +33,9 @@ export class TextField {
 
     async expectErrorMessage(expectedMessage: string) {
         await expect(this.errorMsg).toHaveText(expectedMessage);
+    }
+
+    async expectValue(expectedValue: string) {
+        await expect(this.input).toHaveValue(expectedValue);
     }
 }

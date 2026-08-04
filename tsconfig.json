@@ -3,16 +3,17 @@
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "baseUrl": "./tests",
     "paths": {
       "@framework/*": [
-        "./tests/framework/*"
+        "framework/*"
       ],
-      "@pages/*": [
-        "./tests/framework/pages/*"
+      "@test-data/*": [
+        "test-data/*"
       ],
-      "@/*": [
-        "./tests/*"
-      ]
+      "@ui/*": [
+        "ui/*"
+      ],
     },
     "strict": true,
     "esModuleInterop": true,

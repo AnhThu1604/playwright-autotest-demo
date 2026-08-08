@@ -1,4 +1,4 @@
-import { Radio } from "@framework/components/Radio";
+import { RadioGroup } from "@framework/components/RadioGroup";
 import { Switch } from "@framework/components/Switch";
 import { TextField } from "@framework/components/TextField";
 import { ERROR_MSG } from "@framework/constants/errorMsg";
@@ -12,9 +12,7 @@ export class CreateEmployeePage {
     readonly userForm: EmployeeForm;
     readonly createAccountLogin: Switch;
     readonly username: TextField;
-    // readonly statusEnabled: Radio;
-    // readonly statusDisabled: Radio;
-    readonly status: Radio;
+    readonly status: RadioGroup;
     readonly password: TextField;
     readonly confirmPassword: TextField;
     readonly saveButton: Locator;
@@ -24,9 +22,7 @@ export class CreateEmployeePage {
         this.userForm = new EmployeeForm(page);
         this.createAccountLogin = new Switch(page.locator(".oxd-switch-input"));
         this.username = new TextField(page.locator(".oxd-input-group").filter({ hasText: "Username" }));
-        //this.statusEnabled = new Radio(page.getByRole('radio', { name: 'Enabled' }));
-        //this.statusDisabled = new Radio(page.getByRole('radio', { name: 'Disabled' }));
-        this.status = new Radio(page.getByLabel('Status'));
+        this.status = new RadioGroup(page);
         this.password = new TextField(page.locator('.oxd-input-group').filter({ hasText: /^Password$/ }).locator('input'));
         this.confirmPassword = new TextField(page.locator('.oxd-input-group').filter({ hasText: "Confirm Password" }).locator('input'));
         this.saveButton = page.getByRole("button", { name: "Save" });
@@ -61,7 +57,7 @@ export class CreateEmployeePage {
     }
     async fillAccountInfo(username: string, status: Status, password: string, confirmPassword: string) {
         await this.username.fill(username);
-        await this.status.selectByLabel(status);
+        await this.page.getByText(status).click();
         await this.password.fill(password);
         await this.confirmPassword.fill(confirmPassword);
     }
@@ -96,6 +92,31 @@ export class CreateEmployeePage {
     async expectErrorExistId() {
         await this.userForm.employeeId.expectErrorMessage("Employee Id " + ERROR_MSG.EXIST);
     }
-
-
+    async expectUsernameRequiredError() {
+        await this.username.expectErrorMessage(ERROR_MSG.REQUIRE);
+    }
+    async expectPasswordRequiredError() {
+        await this.password.expectErrorMessage(ERROR_MSG.REQUIRE);
+    }
+    async expectUsernameMinLengthError() {
+        await this.username.expectErrorMessage(ERROR_MSG.MIN_LENGTH_USERNAME);
+    }
+    async expectUsernameMaxLengthError() {
+        await this.username.expectErrorMessage(ERROR_MSG.MAX_LENGTH_USERNAME);
+    }
+    async expectPasswordMinLengthError() {
+        await this.password.expectErrorMessage(ERROR_MSG.MIN_LENGTH_PASSWORD);
+    }
+    async expectPasswordMaxLengthError() {
+        await this.password.expectErrorMessage(ERROR_MSG.MAX_LENGTH_PASSWORD);
+    }
+    async expectPasswordLowerCaseError() {
+        await this.password.expectErrorMessage(ERROR_MSG.CONTAIN_LOWER_CASE_PASSWORD);
+    }
+    async expectPasswordNumberError() {
+        await this.password.expectErrorMessage(ERROR_MSG.CONTAIN_NUMBER_PASSWORD);
+    }
+    async expectConfirmPasswordError() {
+        await this.confirmPassword.expectErrorMessage(ERROR_MSG.CONFIRM_PASSWORD_NOT_MATCH);
+    }
 }

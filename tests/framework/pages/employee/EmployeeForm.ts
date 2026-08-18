@@ -15,7 +15,7 @@ export class EmployeeForm {
       this.firstName = new TextField(page.getByRole("textbox", { name: "First Name" }));
       this.middleName = new TextField(page.getByRole("textbox", { name: "Middle Name" }));
       this.lastName = new TextField(page.getByRole("textbox", { name: "Last Name" }));
-      this.employeeId = new TextField(page.locator('.oxd-input-group').filter({ hasText: 'Employee Id' }).locator('input'));
+      this.employeeId = new TextField(page.locator('.oxd-input-group').filter({ hasText: 'Employee Id' }));
    }
    async fillFirstName(firstName: string) {
       await this.firstName.fill(firstName);

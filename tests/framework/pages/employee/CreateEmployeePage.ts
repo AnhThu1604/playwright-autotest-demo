@@ -23,8 +23,8 @@ export class CreateEmployeePage {
         this.createAccountLogin = new Switch(page.locator(".oxd-switch-input"));
         this.username = new TextField(page.locator(".oxd-input-group").filter({ hasText: "Username" }));
         this.status = new RadioGroup(page);
-        this.password = new TextField(page.locator('.oxd-input-group').filter({ hasText: /^Password$/ }).locator('input'));
-        this.confirmPassword = new TextField(page.locator('.oxd-input-group').filter({ hasText: "Confirm Password" }).locator('input'));
+        this.password = new TextField(page.locator('.oxd-input-group').filter({ hasText: /^Password/ }));
+        this.confirmPassword = new TextField(page.locator('.oxd-input-group').filter({ hasText: "Confirm Password" }));
         this.saveButton = page.getByRole("button", { name: "Save" });
         this.cancelButton = page.getByRole("button", { name: "Cancel" });
     }

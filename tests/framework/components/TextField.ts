@@ -8,7 +8,8 @@ export class TextField {
     constructor(host: Locator) {
         this.host = host;
         this.input = host.locator('xpath=self::input | self::textarea | .//input | .//textarea').first();
-        this.errorMsg = host.locator('xpath=.//span[contains(@class, "oxd-input-group__message")] | ancestor::div[contains(@class, "oxd-input-group")]//span[contains(@class, "oxd-input-group__message")]').first();
+        const container = host.locator('xpath=self::*[contains(@class, "oxd-input-group")] | ./ancestor::*[contains(@class, "oxd-input-group")][1]');
+        this.errorMsg = container.locator('.oxd-input-group__message').first();
     }
 
     async fill(text: string) {

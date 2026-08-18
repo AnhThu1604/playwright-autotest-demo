@@ -10,7 +10,7 @@ function generateBaseEmployee(): Employee {
     const lastName = faker.person.lastName();
     const employeeId = faker.string.numeric(6);
     const username = faker.internet.username({ firstName, lastName });
-    const password = faker.internet.password();
+    const password = faker.internet.password() + "1aA";
     const status = Status.Enable;
     return {
         firstName: firstName,

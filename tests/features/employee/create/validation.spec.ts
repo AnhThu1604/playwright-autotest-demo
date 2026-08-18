@@ -65,10 +65,11 @@ test.describe("Validate Create Employee Page", () => {
             const employee = generateEmployee();
             await test.step("Create user first time", async () => {
                 await pages.createEmployee.createEmployee(employee, true);
+                await pages.createEmployee.page.waitForURL(/viewPersonalDetails/, { timeout: 30000 });
             })
             await test.step("Create user second time", async () => {
                 await pages.EmployeeList.clickAddEmployeeButton();
-                await pages.createEmployee.fillCreateUser(employee, true);
+                await pages.createEmployee.createEmployee(employee, true);
                 await pages.createEmployee.expectErrorExistId();
             })
         })

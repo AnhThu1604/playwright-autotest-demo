@@ -16,7 +16,7 @@ export class EmployeeListPage {
    constructor(page: Page) {
       this.page = page;
       this.addButton = this.page.getByRole("button", { name: "Add" });
-      this.addEmployeeButton = this.page.getByRole("button", { name: "Add Employee" });
+      this.addEmployeeButton = this.page.getByRole("link", { name: "Add Employee" });
    }
 
    async openEmployeeListPage() {

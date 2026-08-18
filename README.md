@@ -110,18 +110,18 @@ Framework áp dụng các locator chuẩn Playwright dựa trên `getByRole`, `g
 - **First Name**: `page.getByPlaceholder('First Name')`
 - **Middle Name**: `page.getByPlaceholder('Middle Name')`
 - **Last Name**: `page.getByPlaceholder('Last Name')`
-- **Employee ID**: `page.locator('.oxd-input-group').filter({ hasText: 'Employee Id' }).locator('input')`
+- **Employee ID**: `page.locator('.oxd-input-group').filter({ hasText: 'Employee Id' })`
 - **Toggle Create Login**: `page.locator('.oxd-switch-input')`
-- **Username**: `page.locator('.oxd-input-group').filter({ hasText: 'Username' }).locator('input')`
+- **Username**: `page.locator('.oxd-input-group').filter({ hasText: 'Username' })`
 - **Status Enabled/Disabled**: `page.getByRole('radio', { name: 'Enabled' })` / `page.getByRole('radio', { name: 'Disabled' })`
-- **Password**: `page.locator('.oxd-input-group').filter({ hasText: /^Password$/ }).locator('input')`
-- **Confirm Password**: `page.locator('.oxd-input-group').filter({ hasText: 'Confirm Password' }).locator('input')`
+- **Password**: `page.locator('.oxd-input-group').filter({ hasText: /^Password/ })`
+- **Confirm Password**: `page.locator('.oxd-input-group').filter({ hasText: 'Confirm Password' })`
 - **Save Button**: `page.getByRole('button', { name: 'Save' })`
 
 ### ✏️ 3. Update Employee (`PIM -> Personal Details`)
-- **Other ID**: `page.locator('.oxd-input-group').filter({ hasText: 'Other Id' }).locator('input')`
-- **Driver's License Number**: `page.locator('.oxd-input-group').filter({ hasText: "Driver's License Number" }).locator('input')`
-- **License Expiry Date**: `page.locator('.oxd-input-group').filter({ hasText: 'License Expiry Date' }).locator('input')`
+- **Other ID**: `page.locator('.oxd-input-group').filter({ hasText: 'Other Id' })`
+- **Driver's License Number**: `page.locator('.oxd-input-group').filter({ hasText: "Driver's License Number" })`
+- **License Expiry Date**: `page.locator('.oxd-input-group').filter({ hasText: 'License Expiry Date' })`
 - **Nationality Dropdown**: `page.locator('.oxd-input-group').filter({ hasText: 'Nationality' }).locator('.oxd-select-text')`
 - **Marital Status Dropdown**: `page.locator('.oxd-input-group').filter({ hasText: 'Marital Status' }).locator('.oxd-select-text')`
 - **Gender Radio (Male/Female)**: `page.getByRole('radio', { name: 'Male' })` / `page.getByRole('radio', { name: 'Female' })`
